@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket Prediction System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* General body styling */
+        body {
+            background-image: url('static/bg.jpg'); /* Set the background image */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Fix the background image so it doesn't scroll */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff; /* Default text color */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        /* Title styling */
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            font-size: 4em; /* Larger text */
+            margin-top: 60px; /* Space from the top */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            letter-spacing: 3px; /* Letter spacing */
+            animation: fadeIn 2s ease-in-out; /* Fade-in animation */
+        }
+        /* Paragraph styling */
+        p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.3em; /* Slightly larger font */
+            color: #fff; /* White text for contrast */
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+            padding: 30px;
+            border-radius: 15px; /* Rounded corners */
+            text-align: center;
+            line-height: 1.8; /* Spacing between lines */
+            max-width: 80%; /* Limit the width */
+            margin: 30px auto; /* Center the paragraph */
+            box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+            animation: slideUp 1.5s ease-in-out; /* Slide-up animation */
+        }
+        /* Button container styling */
+        .button-container1 {
+            display: flex;
+            justify-content: center; /* Horizontally center the button */
+            align-items: center; /* Vertically center the button */
+            height: 15vh; /* Adjust height as needed */
+            margin-top: 40px; /* Add spacing above the button */
+        }
+        /* Awesome button styling */
+        .awesome-button1 {
+            padding: 18px 40px;
+            background: linear-gradient(145deg, #32d72c, #feb47b); /* Gradient background */
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2), -8px -8px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+            outline: none;
+            animation: pulse 2s infinite; /* Pulsing animation */
+        }
+        /* Hover Effect */
+        .awesome-button1:hover {
+            background: linear-gradient(145deg, #ff6c28, #ff7e5f); /* Reversed gradient on hover */
+            box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.25), -10px -10px 25px rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px); /* Slight lift effect */
+        }
+        /* Active Effect */
+        .awesome-button1:active {
+            transform: translateY(3px); /* Button presses down */
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2), -4px -4px 15px rgba(255, 255, 255, 0.1);
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        /* Image gallery styling */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        .gallery-item {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        /* Navbar styling */
+        .navbar {
+            background: linear-gradient(145deg, #6e7f80, #a1b4b0) !important; /* Gradient background */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+        .navbar-brand {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .nav-link {
+            color: #fff !important;
+            font-size: 1.1em;
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #ea9a3e !important; /* Green color on hover */
+        }
+        .btn-outline-success {
+            border-color: #fff;
+            color: #fff;
+        }
+        .btn-outline-success:hover {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .back-button {
+            position: absolute;
+            top: 80px; /* Adjust as needed */
+            left: 20px;
+            background-color: #faf20400; /* Vibrant purple color */
+            color: white;
+            padding: 12px 24px; /* Slightly larger padding for better touch targets */
+            font-size: 18px; /* Larger font size */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+            border: none;
+            border-radius: 30px; /* Fully rounded corners */
+            cursor: pointer;
+            transition: all 0.3s ease; /* Smooth transitions */
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+            outline: none; /* Remove focus outline */
+        }
+        .back-button:hover {
+            background-color: #ffb300; /* Darker shade for hover effect */
+            transform: translateY(-2px); /* Slight upward movement on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+        }
+        .back-button:active {
+            background-color: #f6b513; /* Even darker shade for active state */
+            transform: translateY(0); /* Reset position when clicked */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+        }
+        /* Optional: Add a glowing effect on hover */
+        .back-button:focus-visible {
+            box-shadow: 0 0 10px 3px rgb(245, 214, 12); /* Glowing effect */
+            outline: none; /* Remove default focus outline */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">MyMODEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Airline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Offers & Deals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <a href="{{ url_for('home') }}" class="back-button">⬅ Back to Home</a>
+
+    <br><br>
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+        <div class="gallery-item">
+            <img src="static/air.jpg" alt="Airline Image">
+            <div class="gallery-caption">AirIndia</div>
+        </div>
+        <div class="gallery-item">
+            <img src="static/airasia.jpg" alt="AirAsia">
+            <div class="gallery-caption">AirAsia</div>
+        </div>
+        <div class="gallery-item">
+            <img src="static/go first.jpg" alt="Go First">
+            <div class="gallery-caption">Go First</div>
+        </div>
+        <div class="gallery-item">
+            <img src="static/indigo.jpg" alt="Indigo">
+            <div class="gallery-caption">Indigo</div>
+        </div>
+        <div class="gallery-item">
+            <img src="static/spicejet.avif" alt="SpiceJet">
+            <div class="gallery-caption">SpiceJet</div>
+        </div>
+        <div class="gallery-item">
+            <img src="static/vistara.webp" alt="Vistara">
+            <div class="gallery-caption">Vistara</div>
+        </div>
+    </div>
+
+    <!-- Button Container -->
+    <div class="button-container1">
+        <a href="{{ url_for('predict') }}">
+            <button class="awesome-button1">PREDICT PRICE</button>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
